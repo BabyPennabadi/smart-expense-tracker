@@ -1,0 +1,38 @@
+# AI Assistance Notes
+
+This document details how AI tools were utilized during the development of the Smart Expense Tracker API.
+
+---
+
+## 1. AI-Generated vs. Self-Written Code
+
+* **AI-Generated:**
+  * Initial boilerplate for FastAPI application setup and endpoint signatures.
+  * Structure for Pydantic models with data validation constraints (e.g., `PositiveFloat`).
+  * Pytest test suite boilerplate and initial client fixture configuration.
+
+* **Written & Refactored by Developer:**
+  * Core in-memory storage data structures and state management logic.
+  * Expense summary endpoint algorithm for category aggregation and rounding.
+  * Case-insensitive filtering logic for category queries.
+  * Test setup fixture ensuring state isolation (`autouse=True` clear fixture) between test cases.
+
+---
+
+## 2. Validation & Modifications Made
+
+* **Pydantic Validation Refinement:**
+  * Added `PositiveFloat` validation to restrict negative values at the schema level.
+* **ID Format:**
+  * Shortened UUIDs to 8-character string slices to keep identifiers clean.
+* **Test Isolation:**
+  * Modified test suite to automatically clear the storage dictionary before each test run.
+
+---
+
+## 3. Discarded AI Suggestions
+
+* **Persistence Layer (SQLite / JSON File):**
+  * Kept simple in-memory storage to satisfy core requirements cleanly.
+* **Database Relational Models:**
+  * Opted for embedded category strings in Pydantic models to keep standard API schemas.
